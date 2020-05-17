@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from './components/counter';
 import PostData from './components/postData';
+import Timer from './components/timer';
 
 export const DataContext=React.createContext()
 
@@ -36,6 +37,7 @@ function App() {
     <div className="App">
       <DataContext.Provider value={{postId:post.id,dispatch:dispatch,postData:post.postData}}>
       <Counter/>
+      <Timer/>
       <PostData/>
       </DataContext.Provider>
     </div>
