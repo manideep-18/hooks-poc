@@ -1,11 +1,14 @@
 import React,{useReducer} from 'react';
 import axios from 'axios'
+import {Provider} from 'react-redux'
 
 import logo from './logo.svg';
 import './App.css';
 import Counter from './components/counter';
 import PostData from './components/postData';
 import Timer from './components/timer';
+import ReduxCounter from './components/ReduxCounter';
+import store from './components/redux';
 
 export const DataContext=React.createContext()
 
@@ -34,13 +37,16 @@ function App() {
   const [post,dispatch]=useReducer(reducer,defaultpost)
   
   return (
+  <Provider store={store}>
     <div className="App">
       <DataContext.Provider value={{postId:post.id,dispatch:dispatch,postData:post.postData}}>
       <Counter/>
       <Timer/>
+      <ReduxCounter/>
       <PostData/>
       </DataContext.Provider>
     </div>
+    </Provider>
   );
 }
 
